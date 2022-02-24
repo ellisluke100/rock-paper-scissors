@@ -1,0 +1,15 @@
+.container {
+    display: flex;
+    gap: 50px;
+}
+
+button {
+    height: 120px;
+    width: 120px;
+}
+
+.result-display {
+    max-width: 100rem;
+    height: 1rem;
+    border: 1px solid black;
+}
