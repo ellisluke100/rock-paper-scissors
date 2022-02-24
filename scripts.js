@@ -1,8 +1,8 @@
 function computerPlay() {
     let rand = Math.floor(Math.random() * 3) + 1;
-    if (rand == 1) { return 'Rock'}
-    if (rand == 2) { return 'Paper'}
-    if (rand == 3) { return 'Scissors'}
+    if (rand == 1) return 'Rock';
+    if (rand == 2) return 'Paper';
+    if (rand == 3) return 'Scissors';
 }
 
 function playRound(playerSelection, computerSelection) {
