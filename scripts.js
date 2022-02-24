@@ -17,6 +17,10 @@ function playRound(playerSelection) {
     let winner = 'Player';
     let computerSelection = computerPlay();
 
+    if (winnerDisplay.textContent != "") {
+        winnerDisplay.textContent = "";
+    }
+
     if (playerSelection == computerSelection) {
         resultDisplay.textContent = "Draw!";
         winner = 'None';

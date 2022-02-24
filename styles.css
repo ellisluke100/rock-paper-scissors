@@ -1,15 +1,45 @@
-.container {
+body {
     display: flex;
-    gap: 50px;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.main-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 10vh;
+    width: 75%;
+    height: 500px;
+    border: 1px solid green;
+}
+
+.scores-container {
+    display: flex;
+    justify-content: space-between;
+    gap: 7rem;
+}
+
+#player-score {
+    color: blue;
+}
+
+#computer-score {
+    color: red;
+}
+
+.score-text {
+    font-size: 60px;
+    font-weight: bold;
+}
+
+.player-buttons-container {
+    display: flex;
+    gap: 20px;
 }
 
 button {
     height: 120px;
     width: 120px;
-}
-
-.result-display {
-    max-width: 100rem;
-    height: 1rem;
-    border: 1px solid black;
 }
