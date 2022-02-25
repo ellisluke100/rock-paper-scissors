@@ -9,21 +9,32 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
-    <div class="main-container">
-        <div class="scores-container">
-            <div id="player-score" class="score-text">0</div>
-            <div class="score-text">-</div>
-            <div id="computer-score" class="score-text">0</div>
+    <div id="page-container">
+        <div class="content-container">
+            <div id="heading"> Rock Paper Scissors </div>
+            <div class="row-container">
+                <div id="player-score" class="score-text">0</div>
+                <div class="score-text">-</div>
+                <div id="computer-score" class="score-text">0</div>
+            </div>
+            <div class="row-container">
+                <div class="round-result-container">
+                    <img class="rps-image choice-image" src="images/question.png">
+                    <img class="rps-image choice-image" src="images/question.png">
+                </div>
+            </div>
+            <p class="instruction-text">Choose rock, paper or scissors!</p>
+            <div class="row-container buttons-container">
+                <button data="rock" id="rock-btn" class="player-button"><img class="rps-image" src="images/rock.png"></button>
+                <button data="paper" id="paper-btn" class="player-button"><img class="rps-image" src="images/paper.png"></button>
+                <button data="scissors" id="scissors-btn" class="player-button"><img class="rps-image" src="images/scissors.png"></button>
+            </div>
         </div>
-        <div class="player-buttons-container">
-            <button data="rock" id="rock-btn">Rock</button>
-            <button data="paper" id="paper-btn">Paper</button>
-            <button data="scissors" id="scissors-btn">Scissors</button>
-        </div>
+    
+        <div class="result-display"></div>
+        <div class="winner-display"></div>
+    
     </div>
-
-    <div class="result-display"></div>
-    <div class="winner-display"></div>
     
 </body>
 </html>
