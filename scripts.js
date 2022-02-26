@@ -6,48 +6,43 @@ function computerPlay() {
 }
 
 function endGame(winnerString) {
-    winnerDisplay.textContent = winnerString;
     playerScore = 0;
     computerScore = 0;
-    playerScoreDisplay.textContent = playerScore;
-    computerScoreDisplay.textContent = computerScore;
+    //playerScoreDisplay.textContent = playerScore;
+    //computerScoreDisplay.textContent = computerScore;
+    playerChoice.classList.remove("round-winner","round-loser", "round-draw");
+    computerChoice.classList.remove("round-winner","round-loser", "round-draw");
+}
+
+function displayChoices(playerSelection, computerSelection) {
+    playerChoice.src = "images/" + playerSelection + ".png";
+    computerChoice.src = "images/" + computerSelection + ".png";
 }
 
 function playRound(playerSelection) {
     let winner = 'Player';
     let computerSelection = computerPlay();
 
+    displayChoices(playerSelection, computerSelection);
+
     playerChoice.classList.remove("round-winner","round-loser", "round-draw");
     computerChoice.classList.remove("round-winner","round-loser", "round-draw");
 
-    if (winnerDisplay.textContent != "") {
-        winnerDisplay.textContent = "";
-    }
 
     if (playerSelection == computerSelection) {
-        resultDisplay.textContent = "Draw!";
         winner = 'None';
     } else if (playerSelection == 'rock') {
         if (computerSelection == 'paper') {
-            resultDisplay.textContent = "Lose! Paper beats Rock";
             winner = 'Computer';
-        } else if (computerSelection == 'scissors') {
-            resultDisplay.textContent = "Win! Rock beats Scissors";
         }
     } else if (playerSelection == 'paper') {
-        if (computerSelection == 'rock') {
-            resultDisplay.textContent = "Win! Paper beats Rock";
-        } else if (computerSelection == 'scissors') {
-            resultDisplay.textContent = "Lose! Scissors beats Paper";
+        if (computerSelection == 'scissors') {
             winner = 'Computer';
         }
     } else if (playerSelection == 'scissors') {
         if (computerSelection == 'rock') {
-            resultDisplay.textContent = "Lose! Rock beats Scissors";
             winner = 'Computer';
-        } else if (computerSelection == 'paper') {
-            resultDisplay.textContent = "Win! Scissors beats Paper";
-        }
+        } 
     }
 
     if (winner == 'Player') { 
@@ -87,8 +82,6 @@ let computerScore = 0;
 
 const playerScoreDisplay = document.querySelector('#player-score');
 const computerScoreDisplay = document.querySelector('#computer-score');
-const resultDisplay = document.querySelector('.result-display');
-const winnerDisplay = document.querySelector('.winner-display');
 const playerChoice = document.querySelector('#player-choice');
 const computerChoice = document.querySelector('#computer-choice');
 

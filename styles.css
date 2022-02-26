@@ -4,18 +4,67 @@
     --draw-color: blue;
 }
 
+body {
+    background-color: grey;
+}
+
+#header {
+    font-size: 60px;
+    margin-bottom: 1rem;
+}
+
+/*body {
+	background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
+	background-size: 400% 400%;
+	animation: gradientAnimation 15s ease infinite; 
+}
+
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 50%;
+	}
+	50% {
+		background-position: 100% 50%;
+	}
+	100% {
+		background-position: 0% 50%;
+	}
+}*/
+
 #page-container {
     position: relative;
-    min-height: 100vh;
     margin: 0;
+    padding-top: 10vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
 }
 
 .content-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    border: 1px solid red;
+    border: 3px solid;
+    justify-content: center;
+    padding: 50px;
+    
+
+    border-image: linear-gradient(var(--border-angle), #12c2e9, #c471ed, #f64f59) 1;
+    animation: 4s rotate linear infinite;
 }
+
+@property --border-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+
+@keyframes rotate {
+    to {
+      --border-angle: 360deg;
+    }
+  }
+
 
 .row-container {
     display: flex;
@@ -33,7 +82,6 @@
 }
 
 .scores-container {
-    border: 1px solid red;
     font-size: 40px;
     width: 50%;
     justify-content: center;
@@ -47,11 +95,17 @@
 
 .choice-image {
     border: 2px solid black;
+    padding: 5px;
+}
+
+.player-button,
+.rps-image {
+    background-color: white;
 }
 
 .player-button {
     border: 2px solid black;
-    background-color: white;
+    /*background-color: white;*/
     padding-top: 5px;
 }
 
