@@ -17,6 +17,9 @@ function playRound(playerSelection) {
     let winner = 'Player';
     let computerSelection = computerPlay();
 
+    playerChoice.classList.remove("round-winner","round-loser", "round-draw");
+    computerChoice.classList.remove("round-winner","round-loser", "round-draw");
+
     if (winnerDisplay.textContent != "") {
         winnerDisplay.textContent = "";
     }
@@ -47,8 +50,22 @@ function playRound(playerSelection) {
         }
     }
 
-    if (winner == 'Player') { playerScore++; }
-    if (winner == 'Computer') { computerScore++;}
+    if (winner == 'Player') { 
+        playerScore++; 
+        playerChoice.classList.add('round-winner');
+        computerChoice.classList.add('round-loser');
+    }
+
+    if (winner == 'Computer') { 
+        computerScore++;
+        computerChoice.classList.add('round-winner');
+        playerChoice.classList.add('round-loser');
+    }
+
+    if (winner == 'None') {
+        playerChoice.classList.add('round-draw');
+        computerChoice.classList.add('round-draw');
+    }
 
     playerScoreDisplay.textContent = playerScore;
     computerScoreDisplay.textContent = computerScore;
@@ -72,6 +89,8 @@ const playerScoreDisplay = document.querySelector('#player-score');
 const computerScoreDisplay = document.querySelector('#computer-score');
 const resultDisplay = document.querySelector('.result-display');
 const winnerDisplay = document.querySelector('.winner-display');
+const playerChoice = document.querySelector('#player-choice');
+const computerChoice = document.querySelector('#computer-choice');
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((btn) => {

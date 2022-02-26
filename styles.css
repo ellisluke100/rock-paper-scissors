@@ -1,3 +1,9 @@
+:root {
+    --win-color: green;
+    --lose-color: red;
+    --draw-color: blue;
+}
+
 #page-container {
     position: relative;
     min-height: 100vh;
@@ -8,6 +14,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
+    border: 1px solid red;
 }
 
 .row-container {
@@ -16,7 +23,21 @@
 }
 
 .buttons-container {
-    gap: 20px;
+    display: flex;
+    gap: 25px;
+}
+
+.round-result-container {
+    display: flex;
+    gap: 25px;
+}
+
+.scores-container {
+    border: 1px solid red;
+    font-size: 40px;
+    width: 50%;
+    justify-content: center;
+    gap: 50px;
 }
 
 .rps-image {
@@ -25,10 +46,28 @@
 }
 
 .choice-image {
-    border: 1px solid black;
+    border: 2px solid black;
 }
 
 .player-button {
-    border: 1px solid black;
+    border: 2px solid black;
     background-color: white;
+    padding-top: 5px;
+}
+
+.player-button:hover {
+    transform: scale(1.1, 1.1);
+    border: 2px solid blue;
+}
+
+.round-winner {
+    background-color: var(--win-color);
+}
+
+.round-loser {
+    background-color: var(--lose-color);
+}
+
+.round-draw {
+    background-color: var(--draw-color);
 }
