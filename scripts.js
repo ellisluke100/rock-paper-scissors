@@ -5,13 +5,23 @@ function computerPlay() {
     if (rand == 3) return 'scissors';
 }
 
+function displayGameEndText(winnerString) {
+    pageContainer.classList.add("hidden");
+    const gameEndTag = document.createElement("p");
+    const gameEndTextNode = document.createTextNode(winnerString);
+    gameEndTag.appendChild(gameEndTextNode);
+    const bd = document.querySelector('#bod');
+    bd.appendChild(gameEndTag);
+
+}
+
 function endGame(winnerString) {
     playerScore = 0;
     computerScore = 0;
     //playerScoreDisplay.textContent = playerScore;
     //computerScoreDisplay.textContent = computerScore;
-    playerChoice.classList.remove("round-winner","round-loser", "round-draw");
-    computerChoice.classList.remove("round-winner","round-loser", "round-draw");
+    displayGameEndText(winnerString);
+
 }
 
 function displayChoices(playerSelection, computerSelection) {
@@ -84,6 +94,7 @@ const playerScoreDisplay = document.querySelector('#player-score');
 const computerScoreDisplay = document.querySelector('#computer-score');
 const playerChoice = document.querySelector('#player-choice');
 const computerChoice = document.querySelector('#computer-choice');
+const pageContainer = document.querySelector('#page-container');
 
 const buttons = document.querySelectorAll('button');
 buttons.forEach((btn) => {
