@@ -5,23 +5,38 @@ function computerPlay() {
     if (rand == 3) return 'scissors';
 }
 
-function displayGameEndText(winnerString) {
-    pageContainer.classList.add("hidden");
-    const gameEndTag = document.createElement("p");
-    const gameEndTextNode = document.createTextNode(winnerString);
-    gameEndTag.appendChild(gameEndTextNode);
-    const bd = document.querySelector('#bod');
-    bd.appendChild(gameEndTag);
+function endGame(winnerString, winner) {
+    gameContainer.classList.add("hidden");
+    resultContainer.classList.remove("hidden");
+    resultText.textContent = winnerString;
 
+    console.log("Running!");
+    console.log(winnerString);
+    
+    if (winner == "Player") {
+        console.log("Player wins!");
+        resultText.classList.add("winner");
+    }
+        
+    if (winner == "Computer") {
+        console.log("Computer wins!");
+        resultText.classList.add("loser");
+    }
+    
 }
 
-function endGame(winnerString) {
+function resetGame() {
     playerScore = 0;
     computerScore = 0;
-    //playerScoreDisplay.textContent = playerScore;
-    //computerScoreDisplay.textContent = computerScore;
-    displayGameEndText(winnerString);
-
+    gameContainer.classList.remove("hidden");
+    resultContainer.classList.add("hidden");
+    playerScoreDisplay.textContent = playerScore;
+    computerScoreDisplay.textContent = computerScore;
+    playerChoice.classList.remove("round-winner","round-loser", "round-draw");
+    computerChoice.classList.remove("round-winner","round-loser", "round-draw");
+    playerChoice.src = "images/question.png";
+    computerChoice.src = "images/question.png";
+    resultText.classList.remove("winner","loser");
 }
 
 function displayChoices(playerSelection, computerSelection) {
@@ -32,6 +47,8 @@ function displayChoices(playerSelection, computerSelection) {
 function playRound(playerSelection) {
     let winner = 'Player';
     let computerSelection = computerPlay();
+
+    console.log("Running playRound");
 
     displayChoices(playerSelection, computerSelection);
 
@@ -76,17 +93,16 @@ function playRound(playerSelection) {
     computerScoreDisplay.textContent = computerScore;
 
     if (playerScore == 5) {
-        endGame("Congratulations! You win!");
+        endGame("Congratulations! You win!", winner);
     }
 
     if (computerScore == 5) {
-        endGame("Unlucky! You lose!");
+        endGame("Unlucky! You lose!", winner);
     }
 
 }
 
 let playerSelection = 'Rock';
-let winner;
 let playerScore = 0;
 let computerScore = 0;
 
@@ -94,11 +110,18 @@ const playerScoreDisplay = document.querySelector('#player-score');
 const computerScoreDisplay = document.querySelector('#computer-score');
 const playerChoice = document.querySelector('#player-choice');
 const computerChoice = document.querySelector('#computer-choice');
-const pageContainer = document.querySelector('#page-container');
+const gameContainer = document.querySelector('.rps-game-container');
+const resultContainer = document.querySelector('.result-container');
+const resultText = document.querySelector('.result-text');
 
-const buttons = document.querySelectorAll('button');
+const buttons = document.querySelectorAll('.player-button');
 buttons.forEach((btn) => {
     btn.addEventListener('click', (e) => {
         playRound(btn.getAttribute('data'));
     })
 });
+
+const playAgainButton = document.querySelector('.play-again-button');
+playAgainButton.addEventListener('click', () => {
+    resetGame();
+}); 
